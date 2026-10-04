@@ -30,6 +30,7 @@
     "placeholders": { "name": { "content": "$1" } }
   },
   "emptyList": { "message": "표시된 항목이 없습니다. 목록을 모두 펼친 뒤 다시 시도하세요." },
+  "openItemPage": {"message":"개별 페이지 열기 (새 탭)"},
   "waiting": { "message": "대기 중" },
   "downloadRequested": { "message": "다운로드 요청됨" },
   "stopped": { "message": "중지됨" },

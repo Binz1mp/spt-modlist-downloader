@@ -30,6 +30,7 @@
     "placeholders": { "name": { "content": "$1" } }
   },
   "emptyList": { "message": "No items found. Expand the full list and try again." },
+  "openItemPage": {"message":"Open item page in a new tab"},
   "waiting": { "message": "Waiting" },
   "downloadRequested": { "message": "Download requested" },
   "stopped": { "message": "Stopped" },

@@ -306,6 +306,17 @@
   function entryName(entry) {
     return entry.kind === 'addon' ? `[${t('addonBadge')}] ${entry.name}` : entry.name;
   }
+  function linkFailedRow(row, entry) {
+    const url = SPT.itemPage(entry.url);
+    if (!url) return;
+    const link = document.createElement('a');
+    link.href = url.origin + url.pathname;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.title = t('openItemPage');
+    link.textContent = row.textContent;
+    row.replaceChildren(link);
+  }
   async function run(ui, buttons, mods) {
     if (!ensureContext()) return;
     if (running) return;
@@ -335,9 +346,13 @@
             await sleep(500);
           }
           if (result?.state === 'requested') { requested++; row.textContent = name + ' — ' + t('downloadRequested'); }
-          else row.textContent = name + ' — ' + (stopped ? t('stopped') : result?.error || t('responseTimeout'));
+          else {
+            row.dataset.status = stopped ? 'stopped' : 'failed';
+            row.textContent = name + ' — ' + (stopped ? t('stopped') : result?.error || t('responseTimeout'));
+          }
         } catch (error) {
           if (isContextInvalidated(error)) { dispose(); break; }
+          row.dataset.status = 'failed';
           row.textContent = name + ' — ' + error.message;
         }
         finally {
@@ -345,6 +360,7 @@
           currentToken = null;
         }
         if (!ensureContext()) break;
+        if (row.dataset.status === 'failed') linkFailedRow(row, mod);
         processed++;
         updateBadge(ui, processed, mods.size);
         status.textContent = t('progressStatus', processed, mods.size, requested);

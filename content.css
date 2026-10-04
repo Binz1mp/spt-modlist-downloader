@@ -18,7 +18,7 @@
 #spt-downloader * { box-sizing: border-box; }
 #spt-downloader [hidden] { display: none !important; }
 #spt-downloader-menu {
-  width: min(360px, calc(100vw - 48px));
+  width: min(560px, calc(100vw - 48px));
   max-height: calc(100dvh - 132px);
   overflow-y: auto;
   margin-bottom: 16px;
@@ -134,6 +134,27 @@
 #spt-downloader ol { max-height: 220px; overflow-y: auto; margin: 8px 0 0; padding-left: 24px; list-style: decimal; overflow-wrap: anywhere; }
 #spt-downloader ol:empty { display: none; }
 #spt-downloader ol > li { animation: spt-row-in 200ms ease both; }
+#spt-downloader ol > li[data-status="failed"] {
+  margin: 4px 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #341722;
+  color: #fecaca;
+  box-shadow: inset 3px 0 #b94b5f;
+}
+
+#spt-downloader ol > li[data-status="failed"]:has(> a) { padding: 0; }
+#spt-downloader ol > li[data-status="failed"] > a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: inherit;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 160ms ease;
+}
+#spt-downloader ol > li[data-status="failed"] > a:hover { background: #46202d; }
+#spt-downloader ol > li[data-status="failed"] > a:focus-visible { outline: 2px solid #fda4af; outline-offset: 2px; }
+
 @keyframes spt-row-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes spt-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes spt-backdrop-out { from { opacity: 1; } to { opacity: 0; } }
