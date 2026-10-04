@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extensionName__",
+  "default_locale": "en",
+  "version": "1.0.0",
+  "description": "__MSG_extensionDescription__",
+  "minimum_chrome_version": "112",
+  "permissions": ["storage", "downloads", "tabs"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [{
+    "matches": ["https://sp-mod.com/*"],
+    "js": ["shared.js", "i18n.js", "content.js"],
+    "css": ["content.css"],
+    "run_at": "document_idle"
+  }]
+}

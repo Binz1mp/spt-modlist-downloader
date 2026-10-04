@@ -1,0 +1,142 @@
+#spt-downloader .spt-mod-picker { overscroll-behavior: contain; }
+
+#spt-downloader {
+  --spt-card: #02060e;
+  --spt-dialog: #172131;
+  --spt-item: #0d1320;
+  --spt-green: #00682b;
+  --spt-border: #2b3a4e;
+  --spt-muted: #a3afbf;
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 2147483647;
+  color: #e5e7eb;
+  color-scheme: dark;
+  font: 14px/1.5 system-ui, sans-serif;
+}
+#spt-downloader * { box-sizing: border-box; }
+#spt-downloader [hidden] { display: none !important; }
+#spt-downloader-menu {
+  width: min(360px, calc(100vw - 48px));
+  max-height: calc(100dvh - 132px);
+  overflow-y: auto;
+  margin-bottom: 16px;
+  padding: 18px;
+  border: 1px solid var(--spt-border);
+  border-radius: 14px;
+  background: var(--spt-card);
+  box-shadow: 0 12px 36px #0008;
+  transform-origin: bottom right;
+}
+#spt-downloader [data-actions] { display: flex; gap: 8px; margin-top: 12px; }
+#spt-downloader button {
+  background: #223248;
+  color: #f1f5f9;
+  border: 1px solid #35465d;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font: inherit;
+  transition: background-color 160ms ease, border-color 160ms ease, opacity 160ms ease, transform 160ms ease;
+}
+#spt-downloader button:hover:not(:disabled) { background: #2d415c; border-color: #526984; }
+#spt-downloader button:active:not(:disabled) { transform: scale(.97); }
+#spt-downloader button[data-selected] { background: var(--spt-green); border-color: #168143; }
+#spt-downloader button[data-selected]:hover:not(:disabled) { background: #087b36; }
+#spt-downloader button[data-stop], #spt-downloader button[data-cancel] { background: #111a28; }
+#spt-downloader button:disabled { opacity: .45; cursor: default; }
+#spt-downloader button:focus-visible, #spt-downloader input:focus-visible { outline: 2px solid #86efac; outline-offset: 3px; }
+#spt-downloader [data-launcher] { position: relative; width: 60px; margin-left: auto; }
+#spt-downloader button[data-toggle] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--spt-card);
+  box-shadow: 0 6px 20px #0008;
+}
+#spt-downloader button[data-toggle]:hover { background: #101a29; }
+#spt-downloader .spt-plus-icon {
+  display: block;
+  width: 28px;
+  height: 28px;
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  transform: rotate(0deg);
+  transition: transform 220ms cubic-bezier(.2,.8,.2,1);
+}
+#spt-downloader button[data-toggle][aria-expanded="true"] .spt-plus-icon { transform: rotate(45deg); }
+#spt-downloader [data-badge] {
+  position: absolute;
+  top: -9px;
+  right: -8px;
+  min-width: 40px;
+  padding: 2px 7px;
+  border: 2px solid var(--spt-card);
+  border-radius: 999px;
+  background: var(--spt-green);
+  color: #dcfce7;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+#spt-downloader .spt-mod-picker {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  padding: 24px;
+  overflow-y: auto;
+  border: 1px solid var(--spt-border);
+  border-radius: 16px;
+  background: var(--spt-dialog);
+  color: #e5e7eb;
+  font: 14px/1.5 system-ui, sans-serif;
+  box-shadow: 0 20px 60px #0009;
+}
+#spt-downloader .spt-mod-picker::backdrop { background: #000a; animation: spt-backdrop-in 220ms ease both; }
+#spt-downloader .spt-mod-picker.is-closing::backdrop { animation: spt-backdrop-out 150ms ease both; }
+#spt-downloader .spt-mod-picker h2 { margin: 0; font-size: 20px; font-weight: 700; }
+#spt-downloader [data-mod-list] { max-height: 45dvh; overflow-y: auto; margin: 16px 0 12px; scrollbar-color: #41516a transparent; }
+#spt-downloader .spt-picker-list, #spt-downloader .spt-picker-addons { list-style: none; margin: 0; padding: 0; }
+#spt-downloader .spt-picker-list > li { margin-bottom: 8px; padding: 4px; border: 1px solid #263449; border-radius: 10px; background: var(--spt-item); }
+#spt-downloader .spt-picker-list > li:last-child { margin-bottom: 0; }
+#spt-downloader .spt-picker-addons { margin: 0 0 4px 8px; }
+#spt-downloader .spt-picker-mod > label .spt-picker-name { font-weight: 600; }
+#spt-downloader .spt-picker-name { flex: 1; min-width: 0; }
+#spt-downloader .spt-branch-icon { display: flex; align-items: center; justify-content: center; flex: 0 0 20px; color: #6b809b; }
+#spt-downloader .spt-elbow-icon { display: block; width: 20px; height: 20px; }
+#spt-downloader .spt-addon-badge { flex-shrink: 0; padding: 2px 7px; border: 1px solid #168143; border-radius: 999px; background: var(--spt-green); color: #dcfce7; font-size: 11px; font-weight: 600; line-height: 1.4; }
+#spt-downloader .spt-mod-picker label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+#spt-downloader [data-mod-list] label { animation: spt-row-in 200ms ease var(--spt-row-delay, 0ms) both; }
+#spt-downloader .spt-mod-picker label:hover { background: #152133; }
+#spt-downloader .spt-mod-picker label:has(input:checked) { background: #0b2b20; }
+#spt-downloader .spt-mod-picker input[type="checkbox"] { appearance: auto; width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--spt-green); }
+#spt-downloader [data-selection-count] { color: var(--spt-muted); font-variant-numeric: tabular-nums; }
+#spt-downloader [data-picker-actions] { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+#spt-downloader p { margin: 8px 0 0; color: var(--spt-muted); }
+#spt-downloader ol { max-height: 220px; overflow-y: auto; margin: 8px 0 0; padding-left: 24px; list-style: decimal; overflow-wrap: anywhere; }
+#spt-downloader ol:empty { display: none; }
+#spt-downloader ol > li { animation: spt-row-in 200ms ease both; }
+@keyframes spt-row-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes spt-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes spt-backdrop-out { from { opacity: 1; } to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  #spt-downloader *, #spt-downloader .spt-mod-picker::backdrop { animation: none !important; transition: none !important; }
+}

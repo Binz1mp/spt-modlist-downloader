@@ -1,0 +1,53 @@
+{
+  "extensionName": { "message": "SPT Mod List Downloader" },
+  "extensionDescription": { "message": "Download the latest versions of mods and addons from sp-mod.com lists, one at a time." },
+  "panelTitle": { "message": "SPT Mod Downloader" },
+  "download": { "message": "Download" },
+  "stop": { "message": "Stop" },
+  "menuHint": { "message": "Request the latest versions shown in this list. Keep this tab open while running." },
+  "openMenu": { "message": "Open download menu" },
+  "closeMenu": { "message": "Close download menu" },
+  "badgeProgress": {
+    "message": "$PROCESSED$ of $TOTAL$ processed (not completed file downloads)",
+    "placeholders": { "processed": { "content": "$1" }, "total": { "content": "$2" } }
+  },
+  "pickerTitle": { "message": "Choose mods and addons to download" },
+  "pickerHint": { "message": "Download the latest versions of the mods and addons shown in this list." },
+  "selectAll": { "message": "Select all" },
+  "cancel": { "message": "Cancel" },
+  "downloadAll": { "message": "Download all" },
+  "downloadSelected": {
+    "message": "Download selected ($COUNT$)",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "selectionCount": {
+    "message": "$COUNT$ of $TOTAL$ selected",
+    "placeholders": { "count": { "content": "$1" }, "total": { "content": "$2" } }
+  },
+  "addonBadge": { "message": "Addon", "description": "Keep the English Addon label in all languages." },
+  "parentAddons": {
+    "message": "Addons for $NAME$",
+    "placeholders": { "name": { "content": "$1" } }
+  },
+  "emptyList": { "message": "No items found. Expand the full list and try again." },
+  "waiting": { "message": "Waiting" },
+  "downloadRequested": { "message": "Download requested" },
+  "stopped": { "message": "Stopped" },
+  "finished": { "message": "Finished" },
+  "responseTimeout": { "message": "Response timed out / check the tab manually" },
+  "progressStatus": {
+    "message": "$PROCESSED$/$TOTAL$ processed · download requests: $REQUESTED$ (check Chrome for saved files)",
+    "placeholders": { "processed": { "content": "$1" }, "total": { "content": "$2" }, "requested": { "content": "$3" } }
+  },
+  "summaryStatus": {
+    "message": "$STATE$ · $PROCESSED$ of $TOTAL$ processed · download requests: $REQUESTED$",
+    "placeholders": { "state": { "content": "$1" }, "processed": { "content": "$2" }, "total": { "content": "$3" }, "requested": { "content": "$4" } }
+  },
+  "errorUnauthorized": { "message": "Request not authorized." },
+  "errorListOnly": { "message": "Start from a mod list page." },
+  "errorInvalidItem": { "message": "Invalid mod or addon URL." },
+  "errorOtherTask": { "message": "This belongs to a different task." },
+  "errorDownloadUrl": { "message": "Unable to verify the download URL." },
+  "errorTabClosed": { "message": "The item tab was closed." },
+  "errorDownloadButton": { "message": "Download button not found. Check your login or the page structure." }
+}
